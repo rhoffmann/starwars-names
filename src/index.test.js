@@ -1,20 +1,33 @@
 var expect = require('chai').expect;
 var starWars = require('./index');
 
-describe('starwars-names', function () {
-  it('should work', function() {
-    expect(true).to.be.true;
+describe('starwars-names', function() {
+
+  describe('all', function() {
+
+    it('should be an array of strings', function() {
+      expect(starWars.all).to.satisfy(isArrayOfStrings);
+
+      function isArrayOfStrings(array) {
+        return array.every(function(item) {
+          return typeof item === 'string';
+        });
+      }
+    });
+
+    it('should contain "Darth Vader"', function() {
+      expect(starWars.all).to.include('Darth Vader');
+    });
+
   });
 
-  it('should have a getAll method', function() {
-    expect(starWars.getAll).to.be.defined;
+  describe('random', function() {
+
+    it('should return a random item from starWars.all', function() {
+      var randomItem = starWars.random();
+      expect(starWars.all).to.include(randomItem);
+    });
+
   });
 
-  it('should have the correct length', function() {
-    expect(starWars.getAll()).to.have.length(93);
-  });
-
-  it('should contain darth vader', function() {
-    expect(starWars.getAll()).to.include('Darth Vader');
-  });
 });
