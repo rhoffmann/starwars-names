@@ -1,11 +1,11 @@
-var expect = require('chai').expect;
-var starWars = require('./index');
+import { expect } from 'chai';
+import * as starWars from './index';
 
-describe('starwars-names', function() {
+describe('starwars-names', () => {
 
-  describe('all', function() {
+  describe('all', () => {
 
-    it('should be an array of strings', function() {
+    it('should be an array of strings', () => {
       expect(starWars.all).to.satisfy(isArrayOfStrings);
 
       function isArrayOfStrings(array) {
@@ -15,20 +15,20 @@ describe('starwars-names', function() {
       }
     });
 
-    it('should contain "Darth Vader"', function() {
+    it('should contain "Darth Vader"', () => {
       expect(starWars.all).to.include('Darth Vader');
     });
 
   });
 
-  describe('random', function() {
+  describe('random', () => {
 
-    it('should return a random item from starWars.all', function() {
+    it('should return a random item from starWars.all', () => {
       var randomItem = starWars.random();
       expect(starWars.all).to.include(randomItem);
     });
 
-    it('should return an array of random numbers if passed an array', function() {
+    it('should return an array of random numbers if passed an array', () => {
       var randomItems = starWars.random(3);
       expect(randomItems).to.have.length(3);
       randomItems.forEach(function(item) {
