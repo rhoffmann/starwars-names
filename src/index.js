@@ -9,7 +9,6 @@ module.exports = {
 };
 
 function random(num) {
-
   var randomItems = [];
 
   if (num === undefined) {
@@ -19,7 +18,5 @@ function random(num) {
   for (var i = 0; i < num; i++) {
     randomItems.push(getRandomItem());
   }
-
   return randomItems;
-
 }
